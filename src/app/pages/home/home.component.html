@@ -1,0 +1,52 @@
+<div class="div-content">
+    <section class="text-center container">
+        <div class="row py-lg-5">
+          <div class="col-lg-6 col-md-8 mx-auto">
+            <h1 class="fw-light">AIEPFLIX</h1>
+            <p class="lead text-muted">La mejor plataforma de streaming de peliculas y series</p>
+            <form class="d-flex">
+              <input
+                [(ngModel)]="textSearch" 
+                name="textSearch" 
+                class="form-control me-2" 
+                type="search" 
+                placeholder="Ingrese el título de la pelicula" 
+                aria-label="Search">
+              <button
+                (click)="ontextSearchClick()" 
+                class="btn btn-outline-success" 
+                type="button">Buscar</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <div class="album py-5 bg-light">
+        <div class="container">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+              <div *ngFor="let movie of movieList" class="">
+                <div class="card shadow-sm">
+                  <img src="{{movie.Poster}}" >
+                  <div class="card-body">
+                    <p class="card-text">{{movie.Title}}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <a href="https://www.imdb.com/title/{{movie.imdbID}}/" target="_blanc" type="button" class="btn btn-sm btn-outline-secondary">Ver mas</a>
+                      </div>
+                      <small class="text-muted">{{movie.Year}}</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <div *ngIf="movieList.length==0 && loading==false">
+              <h3>No existen resultados para la busqueda realiza</h3>
+            </div>
+            <div *ngIf="loading" class="text-center">
+              <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>

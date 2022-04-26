@@ -1,0 +1,6 @@
+.div-content {
+    min-height: 100vh;
+    max-height: 100vh;
+    min-width: 85vw;
+    overflow: scroll;
+}
